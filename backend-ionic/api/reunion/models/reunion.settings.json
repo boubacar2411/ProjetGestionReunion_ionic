@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reunions",
+  "info": {
+    "name": "reunion"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "organisateur": {
+      "type": "string",
+      "required": true
+    },
+    "ordreDuJour": {
+      "type": "string",
+      "required": true
+    },
+    "heureDebut": {
+      "type": "time",
+      "required": true
+    },
+    "heureFin": {
+      "type": "time",
+      "required": true
+    },
+    "dateReunion": {
+      "type": "date",
+      "required": true
+    }
+  }
+}
