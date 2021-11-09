@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-user</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (submit) = "addUser(userForm)" #userForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nom</ion-label>
+        <ion-input [(ngModel)]="user.nom" type="text" name="nom" required minlength="2" #nomUser="ngModel"></ion-input>
+        <ion-text color="warning" *ngIf="nomUser.hasError('minlength')">Le nom doit contenir au moins 2 caractères!</ion-text>
+        <ion-text color="danger" *ngIf="nomUser.hasError('required')">Veuillez renseigner le nom !</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Prénom</ion-label>
+        <ion-input [(ngModel)]="user.prenom" type="text" name="prenom" required minlength="2" #prenomUser="ngModel"></ion-input>
+        <ion-text color="warning" *ngIf="prenomUser.hasError('minlength')">Le Prénom doit contenir au moins 2 caractères!</ion-text>
+        <ion-text color="danger" *ngIf="prenomUser.hasError('required')">Veuillez renseigner le prénom !</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input [(ngModel)]="user.email" type="email" name="email" required  #emailUser="ngModel"></ion-input>
+        <ion-text color="warning" *ngIf="emailUser.hasError('minlength')">L'email doit être de la forme email@exemple.com</ion-text>
+        <ion-text color="danger" *ngIf="emailUser.hasError('required')">Veuillez renseigner l'email !</ion-text>
+      </ion-item>
+      <ion-radio-group  [(ngModel)]="user.profile" required #profilUser="ngModel" >
+        <ion-list-header>
+          <ion-label>Profile</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Administrateur</ion-label>
+          <ion-radio slot="start" color="primary" ></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Agent</ion-label>
+          <ion-radio slot="start" color="success"></ion-radio>
+        </ion-item>
+        <ion-text color="danger" *ngIf="profilUser.hasError('required')">Veuillez renseigner le profile !</ion-text>
+      </ion-radio-group>
+    </ion-list>
+    <ion-button type="submit" expand="full" [disabled]="userForm.invalid">Enregistrer</ion-button>
+  </form>
+
+</ion-content>

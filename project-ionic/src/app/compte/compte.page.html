@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Compte
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Compte</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        NOM
+      </ion-col>
+      <ion-col>
+        PRENOM
+      </ion-col>
+      <ion-col>
+        DIRECTION
+      </ion-col>
+      <ion-col>
+      EMAIL
+      </ion-col>
+      <ion-col>
+        Actions
+      </ion-col>
+    </ion-row>
+    </ion-grid>
+
+
+      <ion-grid>
+        <ion-row *ngFor="let user of users" >
+            <ion-col>{{ user.nom }}</ion-col>
+            <ion-col>{{ user.prenom }}</ion-col>
+            <ion-col>{{ user.direction }}</ion-col>
+            <ion-col>{{ user.email }}</ion-col>
+            <ion-col>
+              <ion-icon name="brush-outline" (click)="modifier(user.id)" color="success"></ion-icon>&nbsp;&nbsp;&nbsp;
+              <ion-icon name="trash-outline" (click)="remove(user.id)" color="danger"></ion-icon>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"> <ion-fab-button routerLink="/tabs/compte/adduser"> <ion-icon name="add"></ion-icon> </ion-fab-button> </ion-fab>
+
+</ion-content>
